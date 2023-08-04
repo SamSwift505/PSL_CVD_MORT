@@ -29,7 +29,7 @@ CVD_MORT_AA$YEAR_CVD <- CVD_MORT_AA$Year
 #These years came from the National Conference of State Legislatures 
 #https://www.ncsl.org/labor-and-employment/paid-sick-leave
 CVD_MORT_AA<-CVD_MORT_AA %>% 
-  mutate(PSL_YEAR=case_when(State == 'Connecticut' ~ 2011,
+  mutate(PSL_YEAR=case_when(State == 'Connecticut' ~ 2012,
                             State == 'District of Columbia' ~ 2014,
                             State == 'California' ~ 2015,
                             State == 'Massachusetts' ~ 2015,
@@ -132,7 +132,7 @@ ALL_years_AA <- ALL_years_AA %>%
 
 ##Event Study 
 event_AA<- felm(CRUDE~ lead1 + lead2 +lead3 +lead4 +lead5 +lead6 +lead7 +lead8 +lead9 +lead10 +
-                      lag1+ lag2 +lag3 +lag4 +lag5 +lag6 +lag7 +lag8 + MED_INC + POV_PERCENT_ALL + 
+                      lag1+ lag2 +lag3 +lag4 +lag5 +lag6 +lag7 + MED_INC + POV_PERCENT_ALL + 
                       UNEMP_RATE + UNINSURED_RATE
                     |County + Year|0|State, weights=ALL_years_AA$mean_pop, data = ALL_years_AA)
 summary(event_AA)
@@ -158,7 +158,7 @@ CVD_MORT_FEMALE$YEAR_CVD <- CVD_MORT_FEMALE$Year
 #These years came from the National Conference of State Legislatures 
 #https://www.ncsl.org/labor-and-employment/paid-sick-leave
 CVD_MORT_FEMALE<-CVD_MORT_FEMALE %>% 
-          mutate(PSL_YEAR=case_when(State == 'Connecticut' ~ 2011,
+          mutate(PSL_YEAR=case_when(State == 'Connecticut' ~ 2012,
                                     State == 'District of Columbia' ~ 2014,
                                     State == 'California' ~ 2015,
                                     State == 'Massachusetts' ~ 2015,
@@ -260,7 +260,7 @@ ALL_years_FEMALE <- ALL_years_FEMALE %>%
 
 ##Event Study 
 event_FEMALE<- felm(CRUDE~ lead1 + lead2 +lead3 +lead4 +lead5 +lead6 +lead7 +lead8 +lead9 +lead10 +
-               lag1+ lag2 +lag3 +lag4 +lag5 +lag6 +lag7 +lag8 + MED_INC + POV_PERCENT_ALL + 
+               lag1+ lag2 +lag3 +lag4 +lag5 +lag6 +lag7 + MED_INC + POV_PERCENT_ALL + 
                UNEMP_RATE + UNINSURED_RATE
              |County + Year|0|State, weights=ALL_years_FEMALE$mean_pop, data = ALL_years_FEMALE)
 summary(event_FEMALE)
@@ -285,7 +285,7 @@ CVD_MORT_MALE$YEAR_CVD <- CVD_MORT_MALE$Year
 #These years came from the National Conference of State Legislatures 
 #https://www.ncsl.org/labor-and-employment/paid-sick-leave
 CVD_MORT_MALE<-CVD_MORT_MALE %>% 
-  mutate(PSL_YEAR=case_when(State == 'Connecticut' ~ 2011,
+  mutate(PSL_YEAR=case_when(State == 'Connecticut' ~ 2012,
                             State == 'District of Columbia' ~ 2014,
                             State == 'California' ~ 2015,
                             State == 'Massachusetts' ~ 2015,

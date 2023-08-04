@@ -27,7 +27,7 @@ CVD_MORT$YEAR_CVD <- CVD_MORT$Year
 #These years came from the National Conference of State Legislatures 
 #https://www.ncsl.org/labor-and-employment/paid-sick-leave
 CVD_MORT<-CVD_MORT %>% 
-          mutate(PSL_YEAR=case_when(State == 'Connecticut' ~ 2011,
+          mutate(PSL_YEAR=case_when(State == 'Connecticut' ~ 2012,
                                     State == 'District of Columbia' ~ 2014,
                                     State == 'California' ~ 2015,
                                     State == 'Massachusetts' ~ 2015,
@@ -209,7 +209,7 @@ ALL_years_WT <- subset(ALL_years, CENSUSREGION =="WT")
 
 ### 2008 VARIABLES
 
-table(BASELINE$TREATED)
+
 
 BASELINE<-subset(ALL_years, Year==2008)
 aggregate(BASELINE$MED_INC, by=list(BASELINE$TREATED), FUN=mean)
@@ -276,13 +276,13 @@ UNINSCHANGE
 aggregate(CHANGE$UNINSDIFF, by=list(CHANGE$TREATED), FUN=sd, na.rm = TRUE)
 
 event_unadj<- felm(CRUDE~ lead1 + lead2 +lead3 +lead4 +lead5 +lead6 +lead7 +lead8 +lead9 +lead10 +
-                     lag1+ lag2 +lag3 +lag4 +lag5 +lag6 +lag7 +lag8 
-                   |County + Year|0|State, weights=CVD_MORT$Population, data = ALL)
+                     lag1+ lag2 +lag3 +lag4 +lag5 +lag6 +lag7  
+                   |County + Year|0|State, weights=ALL_years$mean_pop, data = ALL_years)
 summary(event_unadj)
 
 ######################  Event Studies 
 event<- felm(CRUDE~ lead1 + lead2 +lead3 +lead4 +lead5 +lead6 +lead7 +lead8 +lead9 +lead10 +
-               lag1+ lag2 +lag3 +lag4 +lag5 +lag6 +lag7 +lag8 + MED_INC + POV_PERCENT_ALL + 
+               lag1+ lag2 +lag3 +lag4 +lag5 +lag6 +lag7 + MED_INC + POV_PERCENT_ALL + 
                UNEMP_RATE + UNINSURED_RATE
              |County + Year|0|State, weights=ALL_years$mean_pop, data = ALL_years)
 summary(event)
@@ -290,13 +290,13 @@ summary(event)
 ##################### EVENT STUDY BY REGION 
 
 eventNE<- felm(CRUDE~ lead1 + lead2 +lead3 +lead4 +lead5 +lead6 +lead7 +lead8 +lead9 +lead10 +
-               lag1+ lag2 +lag3 +lag4 +lag5 +lag6 +lag7 +lag8 + MED_INC + POV_PERCENT_ALL + 
+               lag1+ lag2 +lag3 +lag4 +lag5 +lag6 +lag7 + MED_INC + POV_PERCENT_ALL + 
                UNEMP_RATE + UNINSURED_RATE
-             |County + Year|0|State, weights=ALL_years_NE$Population, data = ALL_years_NE)
+             |County + Year|0|State, weights=ALL_years_NE$mean_pop, data = ALL_years_NE)
 summary(eventNE)
 
 eventWT<- felm(CRUDE~ lead1 + lead2 +lead3 +lead4 +lead5 +lead6 +lead7 +lead8 +lead9 +lead10 +
-                 lag1+ lag2 +lag3 +lag4 +lag5 +lag6 +lag7 +lag8 + MED_INC + POV_PERCENT_ALL + 
+                 lag1+ lag2 +lag3 +lag4 + MED_INC + POV_PERCENT_ALL + 
                  UNEMP_RATE + UNINSURED_RATE
-               |County + Year|0|State, weights=ALL_years_WT$Population, data = ALL_years_WT)
+               |County + Year|0|State, weights=ALL_years_WT$mean_pop, data = ALL_years_WT)
 summary(eventWT)
