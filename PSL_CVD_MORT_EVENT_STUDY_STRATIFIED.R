@@ -5,9 +5,9 @@ library(estimatr)
 library(lfe)
 
 #Read in CDC Data
-CVD_MORT_FEMALE <- read.delim(file = "C:/Users/samswift/Dropbox/PAID_SICK_LEAVE/DEATH/MORT_DATA/CVD_MORT_FEMALE.txt", header = TRUE, sep = "\t", dec = ".")
-CVD_MORT_MALE <- read.delim(file = "C:/Users/samswift/Dropbox/PAID_SICK_LEAVE/DEATH/MORT_DATA/CVD_MORT_MALE.txt", header = TRUE, sep = "\t", dec = ".")
-CVD_MORT_AA <- read.delim(file = "C:/Users/samswift/Dropbox/PAID_SICK_LEAVE/DEATH/MORT_DATA/CVD_MORT_AA.txt", header = TRUE, sep = "\t", dec = ".")
+CVD_MORT_FEMALE <- read.delim(file = "ADD YOUR PATH HERE.txt", header = TRUE, sep = "\t", dec = ".")
+CVD_MORT_MALE <- read.delim(file = "ADD YOUR PATH HERE.txt", header = TRUE, sep = "\t", dec = ".")
+CVD_MORT_AA <- read.delim(file = "ADD YOUR PATH HERE.txt", header = TRUE, sep = "\t", dec = ".")
 
 
 ####AA 
