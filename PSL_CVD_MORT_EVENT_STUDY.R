@@ -197,7 +197,7 @@ ALL_years <- ALL_years %>%
   )%>%
   ungroup()
 
-write.csv(ALL_years , "C:/Users/samswift/Dropbox/PAID_SICK_LEAVE/DEATH/MORT_DATA/FINAL_DATASET.csv", row.names=FALSE)
+write.csv(ALL_years , "ADD YOUR PATH HERE.csv", row.names=FALSE)
 
 ###################### Table 1 #############################
 
