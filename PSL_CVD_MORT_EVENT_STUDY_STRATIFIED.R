@@ -5,9 +5,9 @@ library(estimatr)
 library(lfe)
 
 #Read in CDC Data
-CVD_MORT_FEMALE <- read.delim(file = "C:/Users/samswift/Dropbox/PAID_SICK_LEAVE/DEATH/MORT_DATA/CVD_MORT_FEMALE.txt", header = TRUE, sep = "\t", dec = ".")
-CVD_MORT_MALE <- read.delim(file = "C:/Users/samswift/Dropbox/PAID_SICK_LEAVE/DEATH/MORT_DATA/CVD_MORT_MALE.txt", header = TRUE, sep = "\t", dec = ".")
-CVD_MORT_AA <- read.delim(file = "C:/Users/samswift/Dropbox/PAID_SICK_LEAVE/DEATH/MORT_DATA/CVD_MORT_AA.txt", header = TRUE, sep = "\t", dec = ".")
+CVD_MORT_FEMALE <- read.delim(file = "YOUR PATH HERE.txt", header = TRUE, sep = "\t", dec = ".")
+CVD_MORT_MALE <- read.delim(file = "YOUR PATH HERE.txt", header = TRUE, sep = "\t", dec = ".")
+CVD_MORT_AA <- read.delim(file = "YOUR PATH HERE.txt", header = TRUE, sep = "\t", dec = ".")
 
 
 ####AA 
@@ -100,7 +100,7 @@ summary(CVD_MORT_AA$CRUDE, useNA="always", fun=mean)
 
 
 #####BRING IN COVARIATES 
-COVARS<-read_csv("C:/Users/samswift/Dropbox/PAID_SICK_LEAVE/DEATH/ACS/COVARS.CSV")
+COVARS<-read_csv("YOUR PATH HERE.CSV")
 
 ALL_AA<-left_join(CVD_MORT_AA, COVARS, by = c("FIPS" = "FULL_FIPS2","YEAR_CVD"="Year"))
 
@@ -228,7 +228,7 @@ summary(CVD_MORT_FEMALE$CRUDE, useNA="always", fun=mean)
 
 
 #####BRING IN COVARIATES 
-COVARS<-read_csv("C:/Users/samswift/Dropbox/PAID_SICK_LEAVE/DEATH/ACS/COVARS.CSV")
+COVARS<-read_csv("YOUR PATH HERE.CSV")
 
 ALL_FEMALE<-left_join(CVD_MORT_FEMALE, COVARS, by = c("FIPS" = "FULL_FIPS2","YEAR_CVD"="Year"))
 
@@ -356,7 +356,7 @@ summary(CVD_MORT_MALE$CRUDE, useNA="always", fun=mean)
 
 
 #####BRING IN COVARIATES 
-COVARS<-read_csv("C:/Users/samswift/Dropbox/PAID_SICK_LEAVE/DEATH/ACS/COVARS.CSV")
+COVARS<-read_csv("YOUR PATH HERE.CSV")
 
 ALL_MALE<-left_join(CVD_MORT_MALE, COVARS, by = c("FIPS" = "FULL_FIPS2","YEAR_CVD"="Year"))
 
