@@ -5,7 +5,7 @@ library(estimatr)
 library(lfe)
 
 #Read in CDC Data
-CVD_MORT <- read.delim(file = "C:/Users/samswift/Dropbox/PAID_SICK_LEAVE/DEATH/MORT_DATA/CVD_MORT_15_64.txt", header = TRUE, sep = "\t", dec = ".")
+CVD_MORT <- read.delim(file = "YOUR PATH HERE.txt", header = TRUE, sep = "\t", dec = ".")
 #Get rid of notes
 CVD_MORT<-subset(CVD_MORT,(!is.na(CVD_MORT$State.Code)))
 
@@ -169,7 +169,7 @@ table(CVD_MORT$State,CVD_MORT$TREATED, useNA="always")
 CVD_MORT<-subset(CVD_MORT,(!is.na(CVD_MORT$LOG_CRUDE)))
 CVD_MORT<-subset(CVD_MORT,Year !=2020)
 #####BRING IN COVARIATES 
-COVARS<-read_csv("C:/Users/samswift/Dropbox/PAID_SICK_LEAVE/DEATH/ACS/COVARS.CSV")
+COVARS<-read_csv("YOUR PATH HERE.CSV")
 
 ALL<-left_join(CVD_MORT, COVARS, by = c("FIPS" = "FULL_FIPS2","YEAR_CVD"="Year"))
 
@@ -196,7 +196,7 @@ length(unique(ALL_years$FIPS))
 ALL_years <- ALL_years %>%
   mutate(popwt=  aggregate(POP, list(FIPS), FUN=mean))
 
-write.csv(ALL_years , "C:/Users/samswift/Dropbox/PAID_SICK_LEAVE/DEATH/MORT_DATA/FINAL_DATASET.csv", row.names=FALSE)
+write.csv(ALL_years , "YOUR PATH HERE.csv", row.names=FALSE)
 
 ### 2008 VARIABLES
 
