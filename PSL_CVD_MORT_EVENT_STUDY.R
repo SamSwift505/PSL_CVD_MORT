@@ -5,7 +5,7 @@ library(estimatr)
 library(lfe)
 
 #Read in CDC Data
-CVD_MORT <- read.delim(file = "C:/Users/samswift/Dropbox/PAID_SICK_LEAVE/DEATH/MORT_DATA/CVD_MORT_15_64.txt", header = TRUE, sep = "\t", dec = ".")
+CVD_MORT <- read.delim(file = "ADD YOUR PATH HERE.txt", header = TRUE, sep = "\t", dec = ".")
 #Get rid of notes
 CVD_MORT<-subset(CVD_MORT,(!is.na(CVD_MORT$State.Code)))
 
