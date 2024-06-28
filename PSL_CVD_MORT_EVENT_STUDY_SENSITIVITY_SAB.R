@@ -358,14 +358,14 @@ ALL_MALE_WT <-subset(ALL_MALE, CENSUSREGION=="WT")
 
 ##NORTHEAST
 event_MALE_NE_SAB<- feols(CRUDE~ sunab(SAYRTRT, Year) 
-                              + MED_INC + POV_PERCENT_ALL + UNEMP_RATE + UNINSURED_RATE
+                              + MED_INC + POV_PERCENT_ALL + UNEMP_RATE + UNINSURED_RATE + MEDICAID
                               |County + Year,
                               cluster=~State, 
                               weights=ALL_MALE_NE$Population, data = ALL_MALE_NE)
 summary(event_MALE_NE_SAB)
 
 event_FEMALE_NE_SAB<- feols(CRUDE~ sunab(SAYRTRT, Year) 
-                          + MED_INC + POV_PERCENT_ALL + UNEMP_RATE + UNINSURED_RATE
+                          + MED_INC + POV_PERCENT_ALL + UNEMP_RATE + UNINSURED_RATE + MEDICAID
                           |County + Year,
                           cluster=~State, 
                           weights=ALL_FEMALE_NE$Population, data = ALL_FEMALE_NE)
@@ -373,18 +373,33 @@ summary(event_FEMALE_NE_SAB)
 
 ##WEST
 event_MALE_WT_SAB<- feols(CRUDE~ sunab(SAYRTRT, Year) 
-                          + MED_INC + POV_PERCENT_ALL + UNEMP_RATE + UNINSURED_RATE
+                          + MED_INC + POV_PERCENT_ALL + UNEMP_RATE + UNINSURED_RATE + MEDICAID
                           |County + Year,
                           cluster=~State, 
                           weights=ALL_MALE_WT$Population, data = ALL_MALE_WT)
 summary(event_MALE_WT_SAB)
 
 event_FEMALE_WT_SAB<- feols(CRUDE~ sunab(SAYRTRT, Year) 
-                            + MED_INC + POV_PERCENT_ALL + UNEMP_RATE + UNINSURED_RATE
+                            + MED_INC + POV_PERCENT_ALL + UNEMP_RATE + UNINSURED_RATE + MEDICAID
                             |County + Year,
                             cluster=~State, 
                             weights=ALL_FEMALE_WT$Population, data = ALL_FEMALE_WT)
 summary(event_FEMALE_WT_SAB)
+
+##nationwide
+event_MALE_US_SAB<- feols(CRUDE~ sunab(SAYRTRT, Year) 
+                          + MED_INC + POV_PERCENT_ALL + UNEMP_RATE + UNINSURED_RATE + MEDICAID
+                          |County + Year,
+                          cluster=~State, 
+                          weights=ALL_MALE$Population, data = ALL_MALE)
+summary(event_MALE_US_SAB)
+
+event_FEMALE_US_SAB<- feols(CRUDE~ sunab(SAYRTRT, Year) 
+                            + MED_INC + POV_PERCENT_ALL + UNEMP_RATE + UNINSURED_RATE + MEDICAID
+                            |County + Year,
+                            cluster=~State, 
+                            weights=ALL_FEMALE$Population, data = ALL_FEMALE)
+summary(event_FEMALE_US_SAB)
 
 
 
@@ -593,5 +608,13 @@ event_AA_WT_SAB<- feols(CRUDE~ sunab(SAYRTRT, Year)
                             cluster=~State, 
                             weights=AA_WT$Population, data = AA_WT)
 summary(event_AA_WT_SAB)
+
+##US
+event_AA_US_SAB<- feols(CRUDE~ sunab(SAYRTRT, Year) 
+                        + MED_INC + POV_PERCENT_ALL + UNEMP_RATE + UNINSURED_RATE
+                        |County + Year,
+                        cluster=~State, 
+                        weights=ALL_years_AA$Population, data = ALL_years_AA)
+summary(event_AA_US_SAB)
 
 
